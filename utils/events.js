@@ -98,6 +98,9 @@ async function interface_add(cbArgs){
 }
 
 async function interface_del(delData){
+  if(typeof delData !== 'object'){
+    return;
+  }
   console.log('触发了删除接口的hook!当前监听器url:',this.url, delData);
   let sendData = {};
   if(typeof delData === 'object'){
@@ -122,19 +125,18 @@ async function interface_del(delData){
 }
 
 async function interface_update(upData){
+  if (typeof upData !== 'object') {
+    return;
+  }
   console.log('触发了更新接口的hook!当前监听器url:',this.url);
   let sendData = {};
   let userModel = {};
   let projectuserModel = {};
-  if(typeof upData === 'object'){
-    userModel = yapi.getInst(UserModel);
-    projectuserModel = yapi.getInst(projectModel);
-    sendData = JSON.parse(JSON.stringify(upData));
-    sendData.diff = showDiff(upData);
-    sendData.link = `http://${this.yapiAdress}:${this.yapiPort? this.yapiPort : (Config.port || '3000')}/project/${sendData.current.project_id}/interface/api/${sendData.current._id}`;
-  }else {
-    sendData._id = upData;
-  }
+  userModel = yapi.getInst(UserModel);
+  projectuserModel = yapi.getInst(projectModel);
+  sendData = JSON.parse(JSON.stringify(upData));
+  sendData.diff = showDiff(upData);
+  sendData.link = `http://${this.yapiAdress}:${this.yapiPort? this.yapiPort : (Config.port || '3000')}/project/${sendData.current.project_id}/interface/api/${sendData.current._id}`;
   sendData.YApiEvent = 'yapi_interface_update';
 
   if(sendData.current && sendData.current.uid){

@@ -1,12 +1,23 @@
 {
-  "name": "yapi-plugin-webhook",
-  "version": "1.1.6",
+  "name": "yapi-plugin-solxnp-webhook",
+  "version": "1.0.1",
   "description": "yapi的网络钩子监控器触发插件",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "lanweifeng",
-  "license": "ISC",
-  "keywords": "yapi webhook"
+  "license": "MIT",
+  "keywords": [
+    "yapi webhook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solxnp/yapi-plugin-solxnp-webhook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/solxnp/yapi-plugin-solxnp-webhook/issues"
+  },
+  "homepage": "https://github.com/solxnp/yapi-plugin-solxnp-webhook#readme"
 }
